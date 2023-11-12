@@ -8,5 +8,5 @@
 */
 int print_str(const char *s)
 {
-        return (puts(s));
+	return (puts(s));
 }
