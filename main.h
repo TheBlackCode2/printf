@@ -7,9 +7,14 @@
 
 #define UNUSED __attribute__((unused))
 
+/**
+ * specifier_attr - a struct for given specifier props
+ * @width: the input width
+ * @precision: the input precision
+ * @length: the input length
+*/
 typedef struct specifier_attr
 {
-	char* specifier;
 	int width;
 	int precision;
 	int length;
@@ -19,7 +24,7 @@ int puts(const char *s);
 int put_char(int c);
 
 int print_char(char c);
-int print_percent();
+int print_percent(void);
 
 int print_str(const char *s);
 int print_S(const char *s);
