@@ -7,4 +7,4 @@ For this project, we are embarking on the creation of our custom print function,
 this repo is handled by:
 
 > - Yassine Ait Ougnaou (yassinew20w@gmail.com)
-> - Marwan Hamdaoui (email)
+> - Marwan Hamdaoui (marwanhamdaoui2020@gmail.com)
