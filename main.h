@@ -8,7 +8,7 @@
 #define UNUSED __attribute__((unused))
 
 /**
- * specifier_attr - a struct for given specifier props
+ * struct specifier_attr - a struct for given specifier props
  * @width: the input width
  * @precision: the input precision
  * @length: the input length
