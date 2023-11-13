@@ -17,7 +17,7 @@
  * @minus: checks for minus flag
  * @zero: cheks for zero flag
  * @space: checks for space flag
- * @hashtah: checks for hashtag flag
+ * @hashtag: checks for hashtag flag
  * @width: field width
  * @precision: field precision
  * @h: specified h modifier
@@ -41,7 +41,7 @@ typedef struct specifier_params
 
 /**
  * struct specifier - specifier info struct
- * @sp: the input specifier
+ * @s: the input specifier
  * @f: access function
 */
 struct specifier
