@@ -8,7 +8,7 @@
 #include <limits.h>
 
 #define BUFFER_SIZE 1024
-#define NULL_STR "(null)"
+/*#define NULL_STR "(null)"*/
 
 /**
  * struct specifier_params - specifier parameters struct
@@ -61,10 +61,10 @@ int print_string(va_list args, params *p);
 int print_percent(va_list args, params *p);
 int print_S(va_list args, params *p);
 
-/* print_adress.c module */
-char *convert(long int n, int base, int flags);
+/* print_address.c module */
+char *convert(long int n, int base, int flags, params *p);
 int print_unsigned_int(va_list args, params *p);
-int print_adress(va_list args, params *p);
+int print_address(va_list args, params *p);
 
 /* specifier.c module */
 int (*get_specifier(char *s))(va_list args, params *p);
