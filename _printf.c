@@ -8,7 +8,7 @@
 */
 int _printf(const char *format, ...)
 {
-	int len;
+	int len = 0;
 	char *s1, *s2;
 	va_list args;
 	params p = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -27,6 +27,7 @@ int _printf(const char *format, ...)
 		if (*s1 != '%')
 		{
 			len += _putchar_(*s1);
+			s1++;
 			continue;
 		}
 		s2 = s1;
@@ -42,7 +43,8 @@ int _printf(const char *format, ...)
 
 		if (!get_specifier(s1))
 			len += print_ft(s2, s1, ((p.l || p.h) ? (s1 - 1) : 0));
-		else len += print_function(s1, args, &p);
+		else
+			len += print_function(s1, args, &p);
 
 		s1++;
 	}
