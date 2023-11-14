@@ -8,7 +8,10 @@
 #include <limits.h>
 
 #define BUFFER_SIZE 1024
-/*#define NULL_STR "(null)"*/
+#define NULL_STR "(null)"
+
+#define CONVERT_LOWERCASE 1
+#define CONVERT_UNSIGNED 2
 
 /**
  * struct specifier_params - specifier parameters struct
@@ -47,53 +50,53 @@ typedef struct specifier_params
 struct specifier
 {
 	char *s;
-	int (*f)(va_list, params)
-}
+	int (*f)(va_list, params *);
+};
 
 /* puts.c module */
-int puts(char *s);
-int putchar(int c);
+int _puts_(char *s);
+int _putchar_(int c);
 
 /* print_type.c module */
 int print_char(va_list args, params *p);
 int print_int(va_list args, params *p);
-int print_string(va_list args, params *p);
+int print_str(va_list args, params *p);
 int print_percent(va_list args, params *p);
 int print_S(va_list args, params *p);
 
 /* print_address.c module */
-char *convert(long int n, int base, int flags, params *p);
+char *convert_num(long int n, int base, int flags, params *p);
 int print_unsigned_int(va_list args, params *p);
 int print_address(va_list args, params *p);
 
 /* specifier.c module */
 int (*get_specifier(char *s))(va_list args, params *p);
-int get_print_function(char *s, va_list, args, params *p);
-int get_flag(char *s, params *p);
-int get_modifier(char *s, params *p);
-char *get_width(char *s, va_list args, params *p);
+int print_function(char *s, va_list args, params *p);
+int flag(char *s, params *p);
+int modifier(char *s, params *p);
+char *width(char *s, va_list args, params *p);
 
 /* print_converted_num.c module*/
-int print_hex(va_list args, params *p);
-int print_HEX(va_list args, params *p);
-int print_binary(va_list args, params *p);
-int print_octal(va_list args, params *p);
+int print_hex_num(va_list args, params *p);
+int print_HEX_num(va_list args, params *p);
+int print_binary_num(va_list args, params *p);
+int print_octal_num(va_list args, params *p);
 
 /* print_mod.c module */
 int print_ft(char *start, char *end, char *e);
-int print_rev(va_list args, params *p);
-int print_rot13(va_list, params *p);
+int print_rev_str(va_list args, params *p);
+int print_rot13_str(va_list, params *p);
 
 /* print_num.c module */
-int is_digit(int c);
-int strlen(char *s);
+int isdigit(int c);
+int getlen(char *s);
 int print_num(char *s, params *p);
-int print_num_rs(char *s params);
-int print_num_ls(char *s params);
+int print_num_rs(char *s, params *p);
+int print_num_ls(char *s, params *p);
 
 /* _print.c module */
-void init_params(va_list args, params *p);
-char *get_precision(char *s, va_list args, params *p);
+void init_parameters(va_list args, params *p);
+char *precision(char *s, va_list args, params *p);
 int _printf(const char *format, ...);
 
 #endif /* MAIN_H */

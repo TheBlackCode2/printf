@@ -23,41 +23,41 @@ int _printf(const char *format, ...)
 	s1 = (char *) format;
 	while (*s1)
 	{
-		init_params(args, p);
+		init_parameters(args, &p);
 		if (*s1 != '%')
 		{
-			len += putchar(*s1);
+			len += _putchar_(*s1);
 			continue;
 		}
 		s2 = s1;
 		s1++;
-		while (get_flag(s1, &p))
+		while (flag(s1, &p))
 			s1++;
 
-		s1 = get_width(s1, args, &p);
-		s1 = get_precision(s1, args, &p);
+		s1 = width(s1, args, &p);
+		s1 = precision(s1, args, &p);
 
-		if (get_modifier(s1, &p))
+		if (modifier(s1, &p))
 			s1++;
 
 		if (!get_specifier(s1))
 			len += print_ft(s2, s1, ((p.l || p.h) ? (s1 - 1) : 0));
-		else len += get_print_function(s1, args, &p);
+		else len += print_function(s1, args, &p);
 
 		s1++;
 	}
-	putchar(-1);
+	_putchar_(-1);
 	va_end(args);
 	return (len);
 }
 
 /**
- * init_params - clean struct field and
+ * init_parameters - clean struct field and
  * @args: the input args list
  * @p: the input struct
  * Return: void
 */
-void init_params(va_list args, params *p)
+void init_parameters(va_list args, params *p)
 {
 	p->unsign = 0;
 
@@ -77,12 +77,12 @@ void init_params(va_list args, params *p)
 }
 
 /**
- * get_precision - gets precision from input format
+ * precision - gets precision from input format
  * @s: the input format
  * @args: the input arguments
  * @p: the input struct
 */
-char *get_precision(char *s, va_list args, params *p)
+char *precision(char *s, va_list args, params *p)
 {
 	int i = 0;
 
@@ -96,19 +96,9 @@ char *get_precision(char *s, va_list args, params *p)
 	}
 	else
 	{
-		while (_isdigit(*s))
-			i = i * 10 + (*p++ - '0');
+		while (isdigit(*s))
+			i = i * 10 + (*s++ - '0');
 	}
 	p->precision = i;
 	return (s);
 }
-
-
-
-
-
-
-
-
-
-

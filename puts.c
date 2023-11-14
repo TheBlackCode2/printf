@@ -1,30 +1,30 @@
 #include "main.h"
 
 /**
- * puts - prints an input string
+ * _puts_ - prints an input string
  *        followed bt new line
  * @s: the input string
  * Return: the number of printed characters
 */
-int puts(char *s)
+int _puts_(char *s)
 {
 	char *i = s;
 
 	while (*s != '\0')
-		putchar(*s++);
-	return (s - a);
+		_putchar_(*s++);
+	return ((int)(s - i));
 }
 
 /**
- * putchar - writes the input character to
+ * _putchar_ - writes the input character to
  *           the standard output (strout)
  * @c: the input character
  * Return: 1 id success, otherwise -1
 */
-int putchar(int c)
+int _putchar_(int c)
 {
 	static int i;
-	static buffer[BUFFER_SIZE];
+	static char buffer[BUFFER_SIZE];
 
 	if (c == -1 || i >= BUFFER_SIZE)
 	{

@@ -8,22 +8,22 @@
 */
 int (*get_specifier(char *s))(va_list args, params *p)
 {
-	specifier sp = 
+	struct specifier sp[] = 
 	{
 		{"c", print_char},
-		{"s", print_string},
+		{"s", print_str},
 		{"d", print_int},
 		{"i", print_int},
 		{"u", print_unsigned_int},
-		{"p", print_adress},
+		{"p", print_address},
 		{"%", print_percent},
-		{"b", print_binary},
-		{"o", print_octal},
-		{"x", print_hex},
-		{"X", print_HEX},
+		{"b", print_binary_num},
+		{"o", print_octal_num},
+		{"x", print_hex_num},
+		{"X", print_HEX_num},
 		{"S", print_S},
-		{"r", print_rev},
-		{"R", print_rot13},
+		{"r", print_rev_str},
+		{"R", print_rot13_str},
 		{NULL, NULL}
 	};
 
@@ -36,13 +36,13 @@ int (*get_specifier(char *s))(va_list args, params *p)
 }
 
 /**
- * get_print_function - finds the format function
+ * print_function - finds the format function
  * @s: the input format
  * @args: the input arguments
  * @p: the input specifier parameters info
  * Return: the number fo character printed
 */
-int get_print_function(char *s, va_list args, params *p)
+int print_function(char *s, va_list args, params *p)
 {
 	int (*f)(va_list, params *) = get_specifier(s);
 
@@ -52,12 +52,12 @@ int get_print_function(char *s, va_list args, params *p)
 }
 
 /**
- * get_flag - handle flag
+ * flag - handle flag
  * @s: the input flag
  * @p: the input specifier parameters info
  * Return: 1 if flag valid
 */
-int get_flag(char *s, params *p)
+int flag(char *s, params *p)
 {
 	int i = 0;
 
@@ -84,12 +84,12 @@ int get_flag(char *s, params *p)
 
 
 /**
- * get_modifier - handle modifier
+ * modifier - handle modifier
  * @s: the input modifier
  * @p: the input specifier parameters info
  * Return: 1 if modifier valid
 */
-int get_modifier(char *s, params *p)
+int modifier(char *s, params *p)
 {
 	int i = 0;
 
@@ -106,13 +106,13 @@ int get_modifier(char *s, params *p)
 }
 
 /**
- * get_width - gets formated dtring width
+ * width - gets formated dtring width
  * @s: the input format
  * @args: the input arguments
  * @p: the input specifier parameters info
  * Return: a pointer
 */
-char *get_width(char *s, va_list args, params *p)
+char *width(char *s, va_list args, params *p)
 {
 	int i = 0;
 
@@ -123,7 +123,7 @@ char *get_width(char *s, va_list args, params *p)
 	}
 	else
 	{
-		while(_isdigit(*s))
+		while(isdigit(*s))
 			i = i * 10 + (*s++ - '0');
 	}
 	p->width = i;
